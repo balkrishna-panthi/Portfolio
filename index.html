@@ -337,7 +337,7 @@
 				<div class="col-md-10 heading-section text-center ftco-animate">
 					<h1 class="big big-2">Resume</h1>
 					<h2 class="mb-4">Resume</h2>
-					<p>Passionate Software Engineer with <span class="exp_Years">[@experienceYears]</span>+ years of experience in designing and developing windows and web based applications.
+					<p>Passionate Software Engineer with <span class="exp_Years">[@experienceYears]</span> years of experience in designing and developing windows and web based applications.
 						 Proven expertise in frontend, backend, databases and project management.</p>
 				</div>
 			</div>
@@ -698,17 +698,20 @@
 	<script src="js/main.js"></script>
 	<script>
 		let startDate = new Date("2022-07-11");
-		let startYear = startDate.getYear();
-		let startMonth = startDate.getMonth();
+		let startYear = startDate.getFullYear();
 		let currentDate = new Date();
-		let currentYear = new Date().getYear();
-		let currentMonth = currentDate.getMonth();
-		var totalExperienceYears = (new Date().getYear()) - startYear;
-		document.getElementById("my_experience_duration").textContent = totalExperienceYears + ' years ' + (currentMonth - startMonth) + ' months';
+		let currentYear = new Date().getFullYear();
+
+		let tempMonths = (currentYear - startYear) * 12;
+		tempMonths -= startDate.getMonth();
+		tempMonths += currentDate.getMonth();
+		let totalMonthsExperience = tempMonths;
+		var totalExperienceYears = Math.floor(totalMonthsExperience/12);
+		document.getElementById("my_experience_duration").textContent =  totalExperienceYears + ' years ' + (totalMonthsExperience%12) + ' months';
 
 		var allElements = document.getElementsByClassName("exp_Years");
 		for (var i = 0; i < allElements.length; i++) {
-			allElements[i].textContent = totalExperienceYears;
+			allElements[i].textContent = totalExperienceYears + '+';
 		}
 	</script>
 </body>
