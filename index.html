@@ -735,6 +735,7 @@
 		tempMonths += currentDate.getMonth();
 		let totalMonthsExperience = tempMonths;
 		var totalExperienceYears = Math.floor(totalMonthsExperience / 12);
+		totalExperienceYears = 4;
 		document.getElementById("my_experience_duration").textContent = totalExperienceYears + ' years ' + (totalMonthsExperience % 12) + ' months';
 
 		var allElements = document.getElementsByClassName("exp_Years");
